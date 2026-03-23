@@ -1,3 +1,4 @@
+using LinqToDB;
 using LinqToDB.Mapping;
 
 namespace api.Models;
@@ -23,7 +24,7 @@ public class Bucket: IBucketId, IUserId, IBucketInfo, IIsPublic, IModelTimeInfo,
     [Column(Name = "user_id"), NotNull]
     public Guid UserId { get; set; } = Guid.Empty;
     
-    [Column(Name = "bucket_name"), NotNull]
+    [Column(Name = "bucket_name", DataType = DataType.VarChar, Length = 125), NotNull]
     public string BucketName { get; set; } = string.Empty;
     
     [Column(Name = "is_public"), NotNull]

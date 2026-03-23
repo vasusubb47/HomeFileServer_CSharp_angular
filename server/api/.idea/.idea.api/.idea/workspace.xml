@@ -9,10 +9,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8054f843-42d9-4947-a9a5-f57e7e14f3c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/Models/UserFile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Models/File.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Models/Bucket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/Bucket.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Models/FileMetadata.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/FileMetadata.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/User.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +121,7 @@
       <updated>1774198340947</updated>
       <workItem from="1774198342897" duration="7160000" />
       <workItem from="1774205679954" duration="444000" />
-      <workItem from="1774276802625" duration="409000" />
+      <workItem from="1774276802625" duration="1518000" />
     </task>
     <task id="LOCAL-00001" summary="init&#10;&#10;inilized the api - work in progress">
       <option name="closed" value="true" />
@@ -131,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774205830930</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="updated the models">
+      <option name="closed" value="true" />
+      <created>1774277231521</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1774277231521</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,13 +147,25 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init&#10;&#10;inilized the api - work in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="init&#10;&#10;inilized the api - work in progress" />
+    <MESSAGE value="updated the models" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated the models" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

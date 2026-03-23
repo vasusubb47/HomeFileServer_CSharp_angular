@@ -1,3 +1,4 @@
+using LinqToDB;
 using LinqToDB.Mapping;
 
 namespace api.Models;
@@ -25,13 +26,13 @@ public class User : IUserId, IUserProfile, IUserSecurity, IModelTimeInfo, IIsAct
     [Column(Name = "user_id", SkipOnInsert = true)]
     public Guid UserId { get; set; } = Guid.Empty;
     
-    [Column(Name = "user_name"), NotNull]
+    [Column(Name = "user_name", DataType = DataType.VarChar, Length = 125), NotNull]
     public string UserName { get; set; } = string.Empty;
     
-    [Column(Name = "email"), NotNull]
+    [Column(Name = "email", DataType = DataType.VarChar, Length = 125), NotNull]
     public string Email { get; set; } = string.Empty;
     
-    [Column(Name = "passcode"), NotNull]
+    [Column(Name = "passcode", DataType = DataType.VarChar, Length = 255), NotNull]
     public string Passcode { get; set; } = string.Empty;
     
     [Column(Name = "is_active"), NotNull]
