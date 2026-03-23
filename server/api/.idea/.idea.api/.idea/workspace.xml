@@ -18,6 +18,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -40,6 +43,9 @@
     <setting file="file://$PROJECT_DIR$/api/Models/ModelInterfaces.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Models/User.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/AppSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/DatabaseInitializer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/DatabaseService/IDbService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/DatabaseService/PostgresDbService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -121,7 +127,7 @@
       <updated>1774198340947</updated>
       <workItem from="1774198342897" duration="7160000" />
       <workItem from="1774205679954" duration="444000" />
-      <workItem from="1774276802625" duration="3350000" />
+      <workItem from="1774276802625" duration="5819000" />
     </task>
     <task id="LOCAL-00001" summary="init&#10;&#10;inilized the api - work in progress">
       <option name="closed" value="true" />
@@ -147,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774278385480</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added App Settings as a singleton service">
+      <option name="closed" value="true" />
+      <created>1774285997402</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1774285997402</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +188,8 @@
     <MESSAGE value="init&#10;&#10;inilized the api - work in progress" />
     <MESSAGE value="updated the models" />
     <MESSAGE value="finishing up the models" />
-    <option name="LAST_COMMIT_MESSAGE" value="finishing up the models" />
+    <MESSAGE value="Added App Settings as a singleton service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added App Settings as a singleton service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

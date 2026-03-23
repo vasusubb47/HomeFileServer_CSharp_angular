@@ -1,5 +1,7 @@
 using api.Services;
 using System.Text.Json;
+using api.Services.DatabaseService;
+using LinqToDB;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,23 @@ var appSettings = new AppSettings();
 builder.Configuration.GetSection("AppSettings").Bind(appSettings);
 builder.Services.AddSingleton(appSettings);
 
+// Manual Registration for PostgresSQL
+builder.Services.AddScoped<IDbService>(provider => 
+{
+    // Get the settings we registered as a Singleton earlier
+    var settings = provider.GetRequiredService<AppSettings>();
+    
+    // Get the connection string from your nested settings object
+    var connectionString = settings.DbConn.PostgresConn.ConnectionString;
+
+    // Configure LinqToDB for PostgresSQL
+    var options = new DataOptions()
+        .UsePostgreSQL(connectionString, LinqToDB.DataProvider.PostgreSQL.PostgreSQLVersion.v18);
+
+    // Return your PostgresDb context
+    return new PostgresDbService(options);
+});
+
 var app = builder.Build();
 
 // Print Settings nicely
@@ -25,6 +44,24 @@ if (app.Environment.IsDevelopment())
     Console.WriteLine("=== Application Settings Loaded ===");
     Console.WriteLine(jsonSettings);
     Console.WriteLine("===================================");
+}
+
+// Create a temporary scope to get the DB service and run the initializer
+// Create a scope to access the Scoped IDbService
+using (var scope = app.Services.CreateScope())
+{
+    var dbService = scope.ServiceProvider.GetRequiredService<IDbService>();
+
+    // Only initialize if the "users" table is missing
+    if (!DatabaseInitializer.IsDatabaseInitialized(dbService))
+    {
+        Console.WriteLine("🗄️  Database not found. Running first-time setup...");
+        DatabaseInitializer.Initialize(dbService);
+    }
+    else
+    {
+        Console.WriteLine("✅ Database already initialized. Skipping setup.");
+    }
 }
 
 // Configure the HTTP request pipeline.

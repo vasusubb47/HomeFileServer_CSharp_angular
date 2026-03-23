@@ -1,0 +1,226 @@
+===================================
+?? Initializing PostgreSQL Schema...
+
+--- [POSTGRES SQL] ---
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+----------------------
+
+
+--- [POSTGRES SQL] ---
+
+            DO $$ BEGIN
+                IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'bucket_perm_type') THEN
+                    CREATE TYPE bucket_perm_type AS ENUM ('admin', 'readonly', 'read_and_write');
+                END IF;
+            END $$;
+----------------------
+
+
+--- [POSTGRES SQL] ---
+CREATE TABLE users
+(
+        user_id    uuid         NOT NULL,
+        user_name  VarChar(125) NOT NULL,
+        email      VarChar(125) NOT NULL,
+        passcode   VarChar(255) NOT NULL,
+        is_active  Boolean      NOT NULL,
+        created_at TimeStampTZ  NOT NULL,
+        updated_at TimeStampTZ      NULL,
+
+        CONSTRAINT "PK_users" PRIMARY KEY (user_id)
+)
+
+----------------------
+
+   ? Table User checked/created.
+
+--- [POSTGRES SQL] ---
+CREATE TABLE buckets
+(
+        bucket_id   uuid         NOT NULL,
+        user_id     uuid         NOT NULL,
+        bucket_name VarChar(125) NOT NULL,
+        is_public   Boolean      NOT NULL,
+        is_shared   Boolean      NOT NULL,
+        is_active   Boolean      NOT NULL,
+        created_at  TimeStampTZ  NOT NULL,
+        updated_at  TimeStampTZ      NULL,
+
+        CONSTRAINT "PK_buckets" PRIMARY KEY (bucket_id)
+)
+
+----------------------
+
+   ? Table Bucket checked/created.
+
+--- [POSTGRES SQL] ---
+CREATE TABLE bucket_users
+(
+        bucket_id  uuid             NOT NULL,
+        user_id    uuid             NOT NULL,
+        permission bucket_perm_type NOT NULL,
+        is_active  Boolean          NOT NULL,
+        created_at TimeStampTZ      NOT NULL,
+        updated_at TimeStampTZ          NULL,
+
+        CONSTRAINT "PK_bucket_users" PRIMARY KEY (bucket_id, user_id)
+)
+
+----------------------
+
+   ? Table BucketUsers checked/created.
+
+--- [POSTGRES SQL] ---
+CREATE TABLE user_files
+(
+        file_id    uuid        NOT NULL,
+        user_id    uuid        NOT NULL,
+        bucket_id  uuid        NOT NULL,
+        is_public  Boolean     NOT NULL,
+        created_at TimeStampTZ NOT NULL,
+        updated_at TimeStampTZ     NULL,
+
+        CONSTRAINT "PK_user_files" PRIMARY KEY (file_id)
+)
+
+----------------------
+
+   ? Table UserFile checked/created.
+
+--- [POSTGRES SQL] ---
+CREATE TABLE file_metadata
+(
+        file_id     uuid         NOT NULL,
+        file_name   VarChar(125) NOT NULL,
+        file_size   Int          NOT NULL,
+        file_type   VarChar(255) NOT NULL,
+        file_hashes text[]       NOT NULL,
+        created_at  TimeStampTZ  NOT NULL,
+        updated_at  TimeStampTZ      NULL,
+
+        CONSTRAINT "PK_file_metadata" PRIMARY KEY (file_id)
+)
+
+----------------------
+
+   ? Table FileMetadata checked/created.
+
+--- [POSTGRES SQL] ---
+ALTER TABLE users ALTER COLUMN user_id SET DEFAULT gen_random_uuid();
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE buckets ALTER COLUMN bucket_id SET DEFAULT gen_random_uuid();
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE users ALTER COLUMN created_at SET DEFAULT CURRENT_TIMESTAMP;
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE buckets ALTER COLUMN created_at SET DEFAULT CURRENT_TIMESTAMP;
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE bucket_users ALTER COLUMN created_at SET DEFAULT CURRENT_TIMESTAMP;
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE user_files ALTER COLUMN created_at SET DEFAULT CURRENT_TIMESTAMP;
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE file_metadata ALTER COLUMN created_at SET DEFAULT CURRENT_TIMESTAMP;
+----------------------
+
+
+--- [POSTGRES SQL] ---
+
+            CREATE OR REPLACE FUNCTION update_timestamp() RETURNS TRIGGER AS $$
+            BEGIN
+                NEW.updated_at = now();
+                RETURN NEW;
+            END;
+            $$ language 'plpgsql';
+----------------------
+
+
+--- [POSTGRES SQL] ---
+
+                DROP TRIGGER IF EXISTS trg_update_users ON users;
+                CREATE TRIGGER trg_update_users
+                BEFORE UPDATE ON users
+                FOR EACH ROW EXECUTE PROCEDURE update_timestamp();
+----------------------
+
+
+--- [POSTGRES SQL] ---
+
+                DROP TRIGGER IF EXISTS trg_update_buckets ON buckets;
+                CREATE TRIGGER trg_update_buckets
+                BEFORE UPDATE ON buckets
+                FOR EACH ROW EXECUTE PROCEDURE update_timestamp();
+----------------------
+
+
+--- [POSTGRES SQL] ---
+
+                DROP TRIGGER IF EXISTS trg_update_bucket_users ON bucket_users;
+                CREATE TRIGGER trg_update_bucket_users
+                BEFORE UPDATE ON bucket_users
+                FOR EACH ROW EXECUTE PROCEDURE update_timestamp();
+----------------------
+
+
+--- [POSTGRES SQL] ---
+
+                DROP TRIGGER IF EXISTS trg_update_user_files ON user_files;
+                CREATE TRIGGER trg_update_user_files
+                BEFORE UPDATE ON user_files
+                FOR EACH ROW EXECUTE PROCEDURE update_timestamp();
+----------------------
+
+
+--- [POSTGRES SQL] ---
+
+                DROP TRIGGER IF EXISTS trg_update_file_metadata ON file_metadata;
+                CREATE TRIGGER trg_update_file_metadata
+                BEFORE UPDATE ON file_metadata
+                FOR EACH ROW EXECUTE PROCEDURE update_timestamp();
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE buckets ADD CONSTRAINT fk_buckets_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE bucket_users ADD CONSTRAINT fk_bu_bucket FOREIGN KEY (bucket_id) REFERENCES buckets(bucket_id) ON DELETE CASCADE
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE bucket_users ADD CONSTRAINT fk_bu_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE user_files ADD CONSTRAINT fk_files_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE user_files ADD CONSTRAINT fk_files_bucket FOREIGN KEY (bucket_id) REFERENCES buckets(bucket_id) ON DELETE CASCADE
+----------------------
+
+
+--- [POSTGRES SQL] ---
+ALTER TABLE file_metadata ADD CONSTRAINT fk_meta_file FOREIGN KEY (file_id) REFERENCES user_files(file_id) ON DELETE CASCADE
+----------------------
