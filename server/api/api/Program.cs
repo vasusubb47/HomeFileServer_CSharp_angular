@@ -1,10 +1,31 @@
+using api.Services;
+using System.Text.Json;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+// Services
+
+// AppSettings
+var appSettings = new AppSettings();
+builder.Configuration.GetSection("AppSettings").Bind(appSettings);
+builder.Services.AddSingleton(appSettings);
+
 var app = builder.Build();
+
+// Print Settings nicely
+if (app.Environment.IsDevelopment())
+{
+    var options = new JsonSerializerOptions { WriteIndented = true };
+    string jsonSettings = JsonSerializer.Serialize(appSettings, options);
+    
+    Console.WriteLine("=== Application Settings Loaded ===");
+    Console.WriteLine(jsonSettings);
+    Console.WriteLine("===================================");
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
