@@ -8,10 +8,13 @@ namespace api.Services.DatabaseService;
 
 public class PostgresDbService: DataConnection, IDbService
 {
-    public PostgresDbService(DataOptions options) : base(options) 
+    private readonly ILogger<PostgresDbService> _logger;
+    
+    public PostgresDbService(DataOptions options, ILogger<PostgresDbService> logger) : base(options) 
     {
         // Add your SQL tracer/interceptor
-        this.AddInterceptor(new UnwrappedCommandInterceptor());
+        _logger = logger;
+        this.AddInterceptor(new UnwrappedCommandInterceptor(_logger));
     }
     
     public ITable<User> Users => this.GetTable<User>();
@@ -22,13 +25,18 @@ public class PostgresDbService: DataConnection, IDbService
 }
 
 // Your Trace Interceptor (Exactly like your SQLite version)
-public class UnwrappedCommandInterceptor : CommandInterceptor
+public class UnwrappedCommandInterceptor(ILogger<PostgresDbService> logger) : CommandInterceptor
 {
+    private readonly ILogger<PostgresDbService> _logger = logger;
+
     public override DbCommand CommandInitialized(CommandEventData eventData, DbCommand command)
     {
-        Console.WriteLine("\n--- [POSTGRES SQL] ---");
-        Console.WriteLine(command.CommandText);
-        Console.WriteLine("----------------------\n");
+        
+        _logger.LogDebug("postgres SQL : {command}", command.CommandText);
+        
+        // Console.WriteLine("\n--- [POSTGRES SQL] ---");
+        // Console.WriteLine(command.CommandText);
+        // Console.WriteLine("----------------------\n");
         return base.CommandInitialized(eventData, command);
     }
 }
