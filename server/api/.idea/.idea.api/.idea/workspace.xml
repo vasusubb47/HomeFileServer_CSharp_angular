@@ -9,13 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8054f843-42d9-4947-a9a5-f57e7e14f3c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Services/AppSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/AppSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Services/DatabaseService/PostgresDbService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/DatabaseService/PostgresDbService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/appsettings.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +154,7 @@
       <workItem from="1774684972023" duration="9397000" />
       <workItem from="1774765314919" duration="37000" />
       <workItem from="1774765371093" duration="11245000" />
-      <workItem from="1774960769432" duration="4056000" />
+      <workItem from="1774960769432" duration="4720000" />
     </task>
     <task id="LOCAL-00001" summary="init&#10;&#10;inilized the api - work in progress">
       <option name="closed" value="true" />
@@ -200,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774288455205</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added a lot, Jwt Token, Open Telemetry, controllers, database connection, email service">
+      <option name="closed" value="true" />
+      <created>1774977582062</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1774977582062</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +233,8 @@
     <MESSAGE value="finishing up the models" />
     <MESSAGE value="Added App Settings as a singleton service" />
     <MESSAGE value="Added Db Service and initialized the database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Db Service and initialized the database" />
+    <MESSAGE value="Added a lot, Jwt Token, Open Telemetry, controllers, database connection, email service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a lot, Jwt Token, Open Telemetry, controllers, database connection, email service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
