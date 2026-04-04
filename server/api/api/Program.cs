@@ -11,6 +11,7 @@ using OpenTelemetry.Logs;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Npgsql;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,15 @@ builder.Services.AddOpenApi();
 var appSettings = new AppSettings();
 builder.Configuration.GetSection("AppSettings").Bind(appSettings);
 builder.Services.AddSingleton(appSettings);
+
+var redisConnection = ConnectionMultiplexer.Connect(appSettings.DbConn.RedisConn.ConnectionString);
+builder.Services.AddSingleton<IConnectionMultiplexer>(redisConnection);
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.ConnectionMultiplexerFactory = () => Task.FromResult((IConnectionMultiplexer)redisConnection);
+    options.InstanceName = appSettings.DbConn.RedisConn.InstanceName;
+});
 
 
 // open Telemetry Setup
@@ -51,7 +61,8 @@ builder.Services.AddOpenTelemetry()
     .WithTracing(tracing => tracing
         .AddAspNetCoreInstrumentation()
         .AddHttpClientInstrumentation()
-        .AddNpgsql() 
+        .AddNpgsql()
+        .AddRedisInstrumentation(redisConnection)
         .AddSource("LinqToDB") 
         .AddOtlpExporter(options => {
             options.Endpoint = new Uri("http://localhost:4317"); 
@@ -70,6 +81,17 @@ builder.Services.AddScoped<IDbService>(provider =>
 
     return new PostgresDbService(options, logger);
 });
+
+builder.Services.AddScoped<RedisCacheService>();
+
+// // 1. For General Caching (IDistributedCache)
+// builder.Services.AddStackExchangeRedisCache(options =>
+// {
+//     // var settings = provider.GetRequiredService<AppSettings>();
+//     
+//     options.Configuration = appSettings.DbConn.RedisConn.ConnectionString;
+//     options.InstanceName = appSettings.DbConn.RedisConn.InstanceName; // Optional prefix for keys
+// });
 
 // adding Auth Service
 builder.Services.AddAuthentication(options =>

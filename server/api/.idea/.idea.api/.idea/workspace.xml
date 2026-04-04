@@ -9,9 +9,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8054f843-42d9-4947-a9a5-f57e7e14f3c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/api.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Repositories/UserRepo/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Repositories/UserRepo/IUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Repositories/UserRepo/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Repositories/UserRepo/UserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Services/AppSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/AppSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Services/DatabaseInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/DatabaseInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +45,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/516c9a4c732a9944720e3bbf0f7c79a6653102e622375abbf67b8b99103db0/IDbConnection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6fa05d7dbf2e454ce78b261b422234da1f1ccedee678fd997e5ef4afe6df6e/ControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85cb434ae681c386e33fc23184227aecc6df16881715f62764f28b8c678627/PostgresException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6779570f3fd6ab2cfc4b8fdeffd92b4561eee076965846b954a718facb/UserLoginInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Controllers/UserController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Middlewares/JwtMiddleware/JwtTraceMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
@@ -53,9 +60,12 @@
     <setting file="file://$PROJECT_DIR$/api/Services/DatabaseService/DatabaseInitializerService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/DatabaseService/IDbService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/DatabaseService/PostgresDbService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/DatabaseService/RedisCacheService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/EmailService/GmailService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/EmailService/IEmailService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/TokenService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/UtilityClass/Result.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/UtilityClass/databaseErrors/IDatabaseError.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="HttpClientEndpointsTabState">
     <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;a334927807cd980dae565bfffcee8321787d6a40&quot; value=&quot;###&amp;#10;POST http://localhost:5045/api/User&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
@@ -79,31 +89,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.api: https.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.api: https.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;,
-      &quot;module&quot;,
-      &quot;repository&quot;
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.api: https">
     <configuration name="api: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/api/api.csproj" />
@@ -154,7 +164,10 @@
       <workItem from="1774684972023" duration="9397000" />
       <workItem from="1774765314919" duration="37000" />
       <workItem from="1774765371093" duration="11245000" />
-      <workItem from="1774960769432" duration="4720000" />
+      <workItem from="1774960769432" duration="4922000" />
+      <workItem from="1775139420896" duration="1365000" />
+      <workItem from="1775211236415" duration="3220000" />
+      <workItem from="1775306151371" duration="8508000" />
     </task>
     <task id="LOCAL-00001" summary="init&#10;&#10;inilized the api - work in progress">
       <option name="closed" value="true" />
@@ -204,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774977582062</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="removed appsettings.json from git commit">
+      <option name="closed" value="true" />
+      <created>1774978092505</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1774978092505</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +255,8 @@
     <MESSAGE value="Added App Settings as a singleton service" />
     <MESSAGE value="Added Db Service and initialized the database" />
     <MESSAGE value="Added a lot, Jwt Token, Open Telemetry, controllers, database connection, email service" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a lot, Jwt Token, Open Telemetry, controllers, database connection, email service" />
+    <MESSAGE value="removed appsettings.json from git commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed appsettings.json from git commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -253,16 +275,29 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/api/Controllers/UserController.cs</url>
-          <line>27</line>
+          <line>39</line>
           <properties documentPath="D:\projects\HomeServer\server\api\api\Controllers\UserController.cs" containingFunctionPresentation="Method 'Login'">
             <startOffsets>
-              <option value="1023" />
+              <option value="1336" />
             </startOffsets>
             <endOffsets>
-              <option value="1024" />
+              <option value="1337" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/api/Repositories/UserRepo/UserRepository.cs</url>
+          <line>18</line>
+          <properties documentPath="D:\projects\HomeServer\server\api\api\Repositories\UserRepo\UserRepository.cs" containingFunctionPresentation="Method 'InsertUser'">
+            <startOffsets>
+              <option value="627" />
+            </startOffsets>
+            <endOffsets>
+              <option value="628" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

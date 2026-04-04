@@ -100,6 +100,7 @@ public static class DatabaseInitializer
         // --- FOREIGN KEY CONSTRAINTS (Try-Catch blocks for FKs in hobby projects prevent crashes on re-runs) ---
         string[] constraints =
         [
+            "ALTER TABLE users ADD CONSTRAINT un_user_email UNIQUE (email)",
             "ALTER TABLE buckets ADD CONSTRAINT fk_buckets_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE",
             "ALTER TABLE bucket_users ADD CONSTRAINT fk_bu_bucket FOREIGN KEY (bucket_id) REFERENCES buckets(bucket_id) ON DELETE CASCADE",
             "ALTER TABLE bucket_users ADD CONSTRAINT fk_bu_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE",

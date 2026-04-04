@@ -1,6 +1,7 @@
 using api.Models;
 using api.Repositories.UserRepo;
 using api.Services;
+using api.UtilityClass.databaseErrors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,12 +16,23 @@ public class UserController(IUserRepository userRepo, ILogger<UserController> lo
     private readonly TokenService _tokenService = tokenService;
     
     [HttpPost]
-    [Authorize]
     public async Task<ActionResult<SelectUser>> InsertUser([FromBody] InsertUser newUser)
     {
         _logger.LogInformation("Creating new user {username}", newUser.UserName);
-        var createdUser = await _userRepo.InsertUser(newUser);
-        return CreatedAtAction(nameof(GetUserById), new { id = createdUser.UserId }, createdUser);
+    
+        var result = await _userRepo.InsertUser(newUser);
+
+        if (!result.IsSuccess)
+        {
+            if (result.Error?.Code == PostgresCodes.UniqueViolation)
+            {
+                return Conflict(new { message = result.Error });
+            }
+        
+            return BadRequest(new { message = result.Error });
+        }
+
+        return CreatedAtAction(nameof(GetUserById), new { id = result.Value!.UserId }, result.Value);
     }
 
     [HttpPost]

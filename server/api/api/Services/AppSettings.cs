@@ -29,6 +29,7 @@ public class PostgresConnection : IDatabaseConfig
 public class RedisConnection : IDatabaseConfig
 {
     public string ConnectionString { get; set; } = string.Empty;
+    public string InstanceName { get; set; } = string.Empty;
     public int RequestTimeOut { get; set; } = 0;
 }
 
