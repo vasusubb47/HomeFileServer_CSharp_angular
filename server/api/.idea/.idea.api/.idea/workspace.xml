@@ -12,11 +12,21 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/api.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Models/Bucket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/Bucket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Models/BucketUsers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/BucketUsers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Models/FileMetadata.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/FileMetadata.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Models/UserFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/UserFile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Repositories/BucketRepo/IBucketRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Repositories/BucketRepo/IBucketRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Repositories/UserRepo/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Repositories/UserRepo/IUserRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Repositories/UserRepo/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Repositories/UserRepo/UserRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Services/AppSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/AppSettings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Services/DatabaseInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/DatabaseInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Services/DatabaseService/PostgresDbService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/DatabaseService/PostgresDbService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Services/EmailService/GmailService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/EmailService/GmailService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Services/EmailService/IEmailService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/EmailService/IEmailService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Services/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/TokenService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +36,13 @@
   </component>
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -43,10 +60,19 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/30248e11d7c377887cd699ede6dab62330d0bc8319d3fb90148687f092e8f172/JsonConverterOfT.WriteCore.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4d431e535966d3e8d58aed86698f4938fdfbde11da876f5c3a222aa8c29b1/Task.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4e75f5bafdf708cb6ac9ed6727072e17c75d6e8889894344da486e2b9e3c7df/SystemTextJsonOutputFormatter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/516c9a4c732a9944720e3bbf0f7c79a6653102e622375abbf67b8b99103db0/IDbConnection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5da6bad9c8eecfe89f5bc2ae761c26492d98ddb67e31cf7711d6362933c560/ObjectDefaultConverter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6fa05d7dbf2e454ce78b261b422234da1f1ccedee678fd997e5ef4afe6df6e/ControllerBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85cb434ae681c386e33fc23184227aecc6df16881715f62764f28b8c678627/PostgresException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8d9085adb4ff9548682c7bd179fa5fb12442b9b9a89a1953d31d8fd07f094/ResourceInvoker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a626d4c7d71df50ecf95d2df223b88ab5d290d91463ba2b1171714073566cec/JsonPropertyInfoOfT.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6779570f3fd6ab2cfc4b8fdeffd92b4561eee076965846b954a718facb/UserLoginInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dcb9649b28f196b5484afc76c1ee6159162675cab8f551a5d3ee7a656b0145e/JsonConverterOfT.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd6c7922327d38d77fcf4161b6828a5c24e856dc00481de04e3a8095d3fa/JsonTypeInfoOfT.WriteHelpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Controllers/FileController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Controllers/UserController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Middlewares/JwtMiddleware/JwtTraceMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Models/Bucket.cs" root0="FORCE_HIGHLIGHTING" />
@@ -54,8 +80,14 @@
     <setting file="file://$PROJECT_DIR$/api/Models/FileMetadata.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Models/ModelInterfaces.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Models/User.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Repositories/BucketRepo/BucketRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Repositories/BucketRepo/IBucketRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Repositories/FileRepo/FileRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Repositories/FileRepo/IFileRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/AppSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/BackgroundServices/EmailProcessingService/EmailWorker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/BackgroundServices/FileProcessingService/FileHashWorker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/BackgroundServices/FileProcessingService/FileProcessingChannel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/DatabaseInitializer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/DatabaseService/DatabaseInitializerService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/DatabaseService/IDbService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -63,9 +95,18 @@
     <setting file="file://$PROJECT_DIR$/api/Services/DatabaseService/RedisCacheService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/EmailService/GmailService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/EmailService/IEmailService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/EmailService/QueuedEmailService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/FileService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Services/TokenService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/UserContextService/CurrentUser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/Services/UserContextService/UserContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/UtilityClass/AppUtility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/UtilityClass/EmailStructure.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/UtilityClass/EmailTemplateHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/UtilityClass/Result.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/UtilityClass/ResultType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/UtilityClass/databaseErrors/IDatabaseError.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/api/obj/project.packagespec.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="HttpClientEndpointsTabState">
     <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;a334927807cd980dae565bfffcee8321787d6a40&quot; value=&quot;###&amp;#10;POST http://localhost:5045/api/User&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
@@ -92,6 +133,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.api: https.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -167,7 +209,12 @@
       <workItem from="1774960769432" duration="4922000" />
       <workItem from="1775139420896" duration="1365000" />
       <workItem from="1775211236415" duration="3220000" />
-      <workItem from="1775306151371" duration="8508000" />
+      <workItem from="1775306151371" duration="9081000" />
+      <workItem from="1775363593175" duration="4407000" />
+      <workItem from="1775570848171" duration="9705000" />
+      <workItem from="1775744726403" duration="6014000" />
+      <workItem from="1775879343505" duration="17300000" />
+      <workItem from="1776621223787" duration="4852000" />
     </task>
     <task id="LOCAL-00001" summary="init&#10;&#10;inilized the api - work in progress">
       <option name="closed" value="true" />
@@ -225,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774978092505</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added Redis caching">
+      <option name="closed" value="true" />
+      <created>1775323437129</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1775323437129</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +311,8 @@
     <MESSAGE value="Added Db Service and initialized the database" />
     <MESSAGE value="Added a lot, Jwt Token, Open Telemetry, controllers, database connection, email service" />
     <MESSAGE value="removed appsettings.json from git commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed appsettings.json from git commit" />
+    <MESSAGE value="Added Redis caching" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Redis caching" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -274,30 +330,82 @@
           <option name="timeStamp" value="3" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/api/Controllers/UserController.cs</url>
-          <line>39</line>
-          <properties documentPath="D:\projects\HomeServer\server\api\api\Controllers\UserController.cs" containingFunctionPresentation="Method 'Login'">
-            <startOffsets>
-              <option value="1336" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1337" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/api/Repositories/UserRepo/UserRepository.cs</url>
-          <line>18</line>
+          <line>14</line>
           <properties documentPath="D:\projects\HomeServer\server\api\api\Repositories\UserRepo\UserRepository.cs" containingFunctionPresentation="Method 'InsertUser'">
             <startOffsets>
-              <option value="627" />
+              <option value="419" />
             </startOffsets>
             <endOffsets>
-              <option value="628" />
+              <option value="420" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/api/Controllers/TestController.cs</url>
+          <line>15</line>
+          <properties documentPath="D:\projects\HomeServer\server\api\api\Controllers\TestController.cs" containingFunctionPresentation="Method 'GetTokenInfo'">
+            <startOffsets>
+              <option value="412" />
+            </startOffsets>
+            <endOffsets>
+              <option value="413" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/api/Controllers/UserController.cs</url>
+          <line>25</line>
+          <properties documentPath="D:\projects\HomeServer\server\api\api\Controllers\UserController.cs" containingFunctionPresentation="Method 'InsertUser'">
+            <startOffsets>
+              <option value="713" />
+            </startOffsets>
+            <endOffsets>
+              <option value="714" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/api/Controllers/UserController.cs</url>
+          <line>86</line>
+          <properties documentPath="D:\projects\HomeServer\server\api\api\Controllers\UserController.cs" containingFunctionPresentation="Method 'GetAllUsers'">
+            <startOffsets>
+              <option value="2771" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2772" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/api/Controllers/BucketController.cs</url>
+          <line>57</line>
+          <properties documentPath="D:\projects\HomeServer\server\api\api\Controllers\BucketController.cs" containingFunctionPresentation="Method 'UploadFile'">
+            <startOffsets>
+              <option value="1834" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1835" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/api/Repositories/FileRepo/FileRepository.cs</url>
+          <line>16</line>
+          <properties documentPath="D:\projects\HomeServer\server\api\api\Repositories\FileRepo\FileRepository.cs" containingFunctionPresentation="Method 'InsertFile'">
+            <startOffsets>
+              <option value="462" />
+            </startOffsets>
+            <endOffsets>
+              <option value="463" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

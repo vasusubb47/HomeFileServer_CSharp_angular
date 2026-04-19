@@ -3,7 +3,7 @@ using LinqToDB.Mapping;
 
 namespace api.Models;
 
-internal interface IBucketId
+public interface IBucketId
 {
     Guid BucketId { get; set; }
 }
@@ -42,6 +42,37 @@ public class Bucket: IBucketId, IUserId, IBucketInfo, IIsPublic, IModelTimeInfo,
     [Column(Name = "updated_at", SkipOnInsert = true), Nullable]
     public DateTimeOffset? UpdatedAt { get; set; } = null;
     
-    [Association(ThisKey = nameof(UserId), OtherKey = nameof(User.UserId), CanBeNull = false)]
-    public User Owner { get; set; }
+    [Association(ThisKey = nameof(UserId), OtherKey = nameof(BasicUser.UserId), CanBeNull = false)]
+    public BasicUser Owner { get; set; }
+}
+
+public record InsertBucketInfo : IBucketInfo, IIsPublic
+{
+    public string BucketName { get; set; } = string.Empty;
+    public bool IsShared { get; set; }
+    public bool IsPublic { get; set; }
+}
+
+public record InsertUserBucketInfo : IUserId, IBucketInfo, IIsPublic
+{
+    public Guid UserId { get; set; } = Guid.Empty;
+    public string BucketName { get; set; } = string.Empty;
+    public bool IsShared { get; set; }
+    public bool IsPublic { get; set; }
+    
+    internal static InsertUserBucketInfo MapFrom<T>(T user, Guid ownerId)
+        where T : IBucketInfo, IIsPublic
+    {
+        return new InsertUserBucketInfo
+        {
+            UserId = ownerId,
+            BucketName = user.BucketName,
+            IsShared = user.IsShared,
+            IsPublic = user.IsPublic
+        };
+    }
+}
+
+public record BucketInfo
+{
 }

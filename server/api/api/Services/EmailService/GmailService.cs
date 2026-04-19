@@ -1,3 +1,4 @@
+using api.UtilityClass;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
@@ -8,21 +9,21 @@ public class GmailService(AppSettings appSettings) : IEmailService
 {
     private readonly AppSettings _appSettings = appSettings;
 
-    public async Task<bool> SendEmailAsync(string toEmail, string subject, string body, bool isHtml)
+    public async Task<bool> SendEmailAsync(EmailStructure emailStructure)
     {
         if (!_appSettings.Email.SendEmail)
         {
             return false;
         }
         
-        toEmail = _appSettings.IsProd? toEmail : _appSettings.Email.To;
+        emailStructure.ToEmail = _appSettings.IsProd? emailStructure.ToEmail : _appSettings.Email.To;
 
         var message = new MimeMessage();
         message.From.Add(new MailboxAddress("Hobby Project Test", _appSettings.Email.From));
-        message.To.Add(new MailboxAddress("Recipient Email", toEmail));
-        message.Subject = subject;
+        message.To.Add(new MailboxAddress("Recipient Email", emailStructure.ToEmail));
+        message.Subject = emailStructure.Subject;
 
-        message.Body = isHtml ? new TextPart("html") { Text = body } : new TextPart("text") { Text = body };
+        message.Body = emailStructure.IsHtml ? new TextPart("html") { Text = emailStructure.Body } : new TextPart("text") { Text = emailStructure.Body };
 
         using var client = new SmtpClient();
         var didSend = false;

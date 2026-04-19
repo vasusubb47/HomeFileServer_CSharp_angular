@@ -8,7 +8,7 @@ public interface IUserRepository
 {
     public Task<Result<SelectUser, IDatabaseError>> InsertUser(InsertUser user);
     
-    public Task<List<SelectUser>> GetAllUsers();
+    public Task<ResultType<List<SelectUser>>> GetAllUsers();
     public Task<SelectUser?> GetUserById(Guid id);
     public Task<SelectUser?> GetUserByUsername(string username);
     public Task<SelectUser?> GetUserByEmail(string email);

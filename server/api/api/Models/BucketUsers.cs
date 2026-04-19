@@ -1,4 +1,6 @@
+using LinqToDB;
 using LinqToDB.Mapping;
+using NpgsqlTypes;
 
 namespace api.Models;
 
@@ -18,7 +20,8 @@ public class BucketUsers : IBucketId, IUserId, IBucketUserPermission, IModelTime
     [Column(Name = "user_id"), NotNull]
     public Guid UserId { get; set; } = Guid.Empty;
     
-    [Column(Name = "permission", DbType = "bucket_perm_type"), NotNull]
+    // [Column(Name = "permission", DataType = DataType.Enum , DbType = "bucket_perm_type"), NotNull]
+    [Column(Name = "permission", DataType = DataType.Enum), NotNull]
     public BucketPermission Permission { get; set; }
     
     [Column(Name = "is_active"), NotNull]
@@ -30,19 +33,19 @@ public class BucketUsers : IBucketId, IUserId, IBucketUserPermission, IModelTime
     [Column(Name = "updated_at", SkipOnInsert = true), Nullable]
     public DateTimeOffset? UpdatedAt { get; set; } = null;
     
-    [Association(ThisKey = nameof(BucketId), OtherKey = nameof(Bucket.BucketId), CanBeNull = false)]
+    [LinqToDB.Mapping.Association(ThisKey = nameof(BucketId), OtherKey = nameof(Bucket.BucketId), CanBeNull = false)]
     public Bucket Bucket { get; set; }
 
-    [Association(ThisKey = nameof(UserId), OtherKey = nameof(User.UserId), CanBeNull = false)]
+    [LinqToDB.Mapping.Association(ThisKey = nameof(UserId), OtherKey = nameof(User.UserId), CanBeNull = false)]
     public User User { get; set; }
 }
 
 public enum BucketPermission
 {
-    [MapValue("admin")]             
-    Admin,        // Matches 'admin' in Postgres
-    [MapValue("readonly")]          
-    ReadOnly,     // Matches 'readonly' in Postgres
-    [MapValue("read_and_write")]    
-    ReadAndWrite  // Matches 'read_and_write' in Postgres
+    [PgName("admin")]
+    Admin,
+    [PgName("read_only")]
+    ReadOnly,
+    [PgName("read_and_write")]
+    ReadAndWrite
 }

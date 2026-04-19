@@ -38,7 +38,11 @@ public static class DatabaseInitializer
         db.Execute(@"
             DO $$ BEGIN
                 IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'bucket_perm_type') THEN
-                    CREATE TYPE bucket_perm_type AS ENUM ('admin', 'readonly', 'read_and_write');
+                    CREATE TYPE bucket_perm_type AS ENUM ('admin', 'read_only', 'read_and_write');
+                END IF;
+
+                IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'user_role_type') THEN
+                    CREATE TYPE user_role_type AS ENUM ('admin', 'user');
                 END IF;
             END $$;");
 
@@ -70,6 +74,7 @@ public static class DatabaseInitializer
         // --- DEFAULTS for UUIDs ---
         db.Execute("ALTER TABLE users ALTER COLUMN user_id SET DEFAULT gen_random_uuid();");
         db.Execute("ALTER TABLE buckets ALTER COLUMN bucket_id SET DEFAULT gen_random_uuid();");
+        db.Execute("ALTER TABLE user_files ALTER COLUMN file_id SET DEFAULT gen_random_uuid();");
         
         // --- DEFAULTS for TIMESTAMPS ---
         var tablesWithTime = new[] { "users", "buckets", "bucket_users", "user_files", "file_metadata" };
@@ -102,6 +107,7 @@ public static class DatabaseInitializer
         [
             "ALTER TABLE users ADD CONSTRAINT un_user_email UNIQUE (email)",
             "ALTER TABLE buckets ADD CONSTRAINT fk_buckets_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE",
+            "ALTER TABLE buckets ADD CONSTRAINT un_bucket_name UNIQUE (bucket_name)",
             "ALTER TABLE bucket_users ADD CONSTRAINT fk_bu_bucket FOREIGN KEY (bucket_id) REFERENCES buckets(bucket_id) ON DELETE CASCADE",
             "ALTER TABLE bucket_users ADD CONSTRAINT fk_bu_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE",
             "ALTER TABLE user_files ADD CONSTRAINT fk_files_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE",

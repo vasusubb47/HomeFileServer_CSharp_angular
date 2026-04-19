@@ -4,6 +4,7 @@ using System.Text.Json;
 using api.Repositories.UserRepo;
 using api.Services.DatabaseService;
 using api.Services.EmailService;
+using api.Services.UserContextService;
 using LinqToDB;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -12,12 +13,24 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Npgsql;
 using StackExchange.Redis;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text.Json.Serialization;
+using api.Models;
+using api.Repositories.BucketRepo;
+using api.Repositories.FileRepo;
+using api.Services.BackgroundServices.EmailProcessingService;
+using api.Services.BackgroundServices.FileProcessingService;
+
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 builder.Services.AddOpenApi();
 
 // Services
@@ -59,6 +72,7 @@ builder.Services.AddOpenTelemetry()
             new("test.run_id", DateTime.Now.ToString("yyyyMMdd-HHmm"))
         }))
     .WithTracing(tracing => tracing
+        .AddSource("EmailService.Worker")
         .AddAspNetCoreInstrumentation()
         .AddHttpClientInstrumentation()
         .AddNpgsql()
@@ -70,6 +84,8 @@ builder.Services.AddOpenTelemetry()
         }));
 
 // database service
+NpgsqlConnection.GlobalTypeMapper.MapEnum<UserRole>("user_role_type");
+NpgsqlConnection.GlobalTypeMapper.MapEnum<BucketPermission>("bucket_perm_type");
 builder.Services.AddScoped<IDbService>(provider => 
 {
     var settings = provider.GetRequiredService<AppSettings>();
@@ -83,15 +99,6 @@ builder.Services.AddScoped<IDbService>(provider =>
 });
 
 builder.Services.AddScoped<RedisCacheService>();
-
-// // 1. For General Caching (IDistributedCache)
-// builder.Services.AddStackExchangeRedisCache(options =>
-// {
-//     // var settings = provider.GetRequiredService<AppSettings>();
-//     
-//     options.Configuration = appSettings.DbConn.RedisConn.ConnectionString;
-//     options.InstanceName = appSettings.DbConn.RedisConn.InstanceName; // Optional prefix for keys
-// });
 
 // adding Auth Service
 builder.Services.AddAuthentication(options =>
@@ -118,16 +125,36 @@ builder.Services.AddOptions<JwtBearerOptions>(JwtBearerDefaults.AuthenticationSc
 
 builder.Services.AddAuthorization();
 
+// Required to inject IHttpContextAccessor
+builder.Services.AddHttpContextAccessor();
+
+// Register your typed context
+builder.Services.AddScoped<IUserContext, UserContext>();
+
 // register normal created services
-builder.Services.AddScoped<IEmailService, GmailService>();
+// builder.Services.AddScoped<IEmailService, GmailService>();
+builder.Services.AddScoped<IEmailService, QueuedEmailService>();
 builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<FileService>();
+builder.Services.AddSingleton<FileProcessingChannel>();
+builder.Services.AddSingleton<EmailProcessingChannel>();
+
+// register background workers
+builder.Services.AddHostedService<FileHashWorker>();
+builder.Services.AddHostedService<EmailWorker>();
 
 // register Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IBucketRepository, BucketRepository>();
+builder.Services.AddScoped<IFileRepository, FileRepository>();
 
 builder.Services.AddHostedService<DatabaseInitializerService>();
 
 var app = builder.Build();
+
+// 1. Static files/Routing
+app.UseHttpsRedirection();
+app.UseRouting(); // Add this if not using Minimal APIs for everything
 
 // keep same ordering
 app.UseAuthentication();
@@ -145,24 +172,6 @@ if (app.Environment.IsDevelopment())
     Console.WriteLine("===================================");
 }
 
-// // Create a temporary scope to get the DB service and run the initializer
-// // Create a scope to access the Scoped IDbService
-// using (var scope = app.Services.CreateScope())
-// {
-//     var dbService = scope.ServiceProvider.GetRequiredService<IDbService>();
-//
-//     // Only initialize if the "users" table is missing
-//     if (!DatabaseInitializer.IsDatabaseInitialized(dbService))
-//     {
-//         Console.WriteLine("🗄️  Database not found. Running first-time setup...");
-//         DatabaseInitializer.Initialize(dbService);
-//     }
-//     else
-//     {
-//         Console.WriteLine("✅ Database already initialized. Skipping setup.");
-//     }
-// }
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -170,7 +179,4 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
-
-app.UseHttpsRedirection();
-
 app.Run();

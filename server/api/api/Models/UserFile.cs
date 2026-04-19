@@ -2,7 +2,7 @@ using LinqToDB.Mapping;
 
 namespace api.Models;
 
-internal interface IFileId
+public interface IFileId
 {
     Guid FileId { get; set; }
 }
@@ -32,6 +32,36 @@ public class UserFile: IFileId, IUserId, IBucketId, IIsPublic, IModelTimeInfo
     [Association(ThisKey = nameof(BucketId), OtherKey = nameof(Bucket.BucketId), CanBeNull = false)]
     public Bucket Bucket { get; set; }
 
-    [Association(ThisKey = nameof(UserId), OtherKey = nameof(Owner.UserId), CanBeNull = false)]
-    public User Owner { get; set; }
+    [Association(ThisKey = nameof(UserId), OtherKey = nameof(BasicUser.UserId), CanBeNull = false)]
+    public BasicUser Owner { get; set; }
+}
+
+public record InsertUserFile: IFileId, IFileMetadata
+{
+    public Guid FileId { get; set; } = Guid.Empty;
+    public string FileName { get; set; } = string.Empty;
+    public long FileSize { get; set; }
+    public string FileType { get; set; } = string.Empty;
+    public List<string>? FileHashes { get; set; } = [];
+}
+
+public record UserBucketId : IUserId, IBucketId
+{
+    public Guid UserId { get; set; } = Guid.Empty;
+    public Guid BucketId { get; set; } = Guid.Empty;
+}
+
+public record UserBucketFileId : IUserId, IBucketId, IFileId
+{
+    public Guid UserId { get; set; } = Guid.Empty;
+    public Guid BucketId { get; set; } = Guid.Empty;
+    public Guid FileId { get; set; } = Guid.Empty;
+}
+
+public record UserFileNameExt : IUserId, IBucketId, IFileId
+{
+    public Guid UserId { get; set; } = Guid.Empty;
+    public Guid BucketId { get; set; } = Guid.Empty;
+    public Guid FileId { get; set; } = Guid.Empty;
+    public string FileExtenstion { get; set; } = string.Empty;
 }

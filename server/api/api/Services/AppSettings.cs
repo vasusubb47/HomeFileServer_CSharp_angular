@@ -6,6 +6,13 @@ public class AppSettings
     public DatabaseSettings DbConn { get; set; } = new();
     public EmailSettings Email { get; set; } = new();
     public JwtSettings Jwt { get; set; } = new();
+    public BasicFileSettings FileSettings { get; set; } = new();
+}
+
+public class BasicFileSettings
+{
+    public string BaseFilePath { get; set; } = string.Empty;
+    public int MaxFileSize { get; set; }
 }
 
 public class DatabaseSettings
