@@ -10,9 +10,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8054f843-42d9-4947-a9a5-f57e7e14f3c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Models/UserFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Models/UserFile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Services/BackgroundServices/FileProcessingService/FileHashWorker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/BackgroundServices/FileProcessingService/FileHashWorker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Services/BackgroundServices/FileProcessingService/FileProcessingChannel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Services/BackgroundServices/FileProcessingService/FileProcessingChannel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,6 +199,7 @@
       <workItem from="1775879343505" duration="17300000" />
       <workItem from="1776621223787" duration="5712000" />
       <workItem from="1776656438968" duration="1464000" />
+      <workItem from="1776880263552" duration="1463000" />
     </task>
     <task id="LOCAL-00001" summary="init&#10;&#10;inilized the api - work in progress">
       <option name="closed" value="true" />
@@ -274,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776627120927</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added Activity Tracing in File Processing">
+      <option name="closed" value="true" />
+      <created>1776880338513</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1776880338513</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +314,8 @@
     <MESSAGE value="removed appsettings.json from git commit" />
     <MESSAGE value="Added Redis caching" />
     <MESSAGE value="huge shit" />
-    <option name="LAST_COMMIT_MESSAGE" value="huge shit" />
+    <MESSAGE value="Added Activity Tracing in File Processing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Activity Tracing in File Processing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

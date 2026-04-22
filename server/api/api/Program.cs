@@ -73,6 +73,7 @@ builder.Services.AddOpenTelemetry()
         }))
     .WithTracing(tracing => tracing
         .AddSource("EmailService.Worker")
+        .AddSource("FileProcessing.Worker")
         .AddAspNetCoreInstrumentation()
         .AddHttpClientInstrumentation()
         .AddNpgsql()
