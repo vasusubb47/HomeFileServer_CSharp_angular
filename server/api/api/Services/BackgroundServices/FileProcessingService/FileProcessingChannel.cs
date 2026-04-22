@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Threading.Channels;
 using api.Models;
 
@@ -19,6 +20,11 @@ public class FileProcessingChannel
     public async ValueTask AddFileAsync(UserFileNameExt userFileNameExt)
     {
         _logger.LogDebug("Adding file {FileId}", userFileNameExt.FileId);
+        
+        var activity = Activity.Current;
+        userFileNameExt.TraceId = activity?.TraceId.ToHexString();
+        userFileNameExt.SpanId = activity?.SpanId.ToHexString();
+        
         await _channel.Writer.WriteAsync(userFileNameExt);
     }
 

@@ -64,4 +64,8 @@ public record UserFileNameExt : IUserId, IBucketId, IFileId
     public Guid BucketId { get; set; } = Guid.Empty;
     public Guid FileId { get; set; } = Guid.Empty;
     public string FileExtenstion { get; set; } = string.Empty;
+    
+    // Add this to store the trace context
+    public string? TraceId { get; set; }
+    public string? SpanId { get; set; }
 }
